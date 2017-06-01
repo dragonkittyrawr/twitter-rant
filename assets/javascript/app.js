@@ -6,11 +6,14 @@ var twitter = {
     wordCount: 0,
     tweets: 0,
     count: 1,
+    index: 0,
 
     tweetParser: function(rantRaw, rantParse, rantCharCount) {
         this.rantParse = rantParse;
         this.rantCharCount = rantCharCount;
         this.rantRaw = rantRaw;
+
+        // DETERMINE number of tweets
 
         if (rantCharCount.length > 99) {
             tweetCount = Math.round(rantCharCount.length / 135);
@@ -27,7 +30,12 @@ var twitter = {
 
         for (var p = 0; p < tweetCount; p++) {
             tweets = p + 1;
+            window["tweet" + twitter.count] = [];
             console.log(tweets + "/" + tweetCount);
+            console.log(window["tweet" + this.count]);
+            console.log(this.count);
+            window["tweet" + this.count].push(tweets + "/" + tweetCount);
+            this.count++;
         };
 
         // BUILD wordCount
@@ -37,20 +45,25 @@ var twitter = {
             this.wordCount += rantParse[i].length + 1;
             console.log("wordCount: " + this.wordCount);
 
-
+            // BUILD tweets
+            this.count = 1;
+            // var index = 0;
             if (this.wordCount < 140) {
-
-                window["tweet" + this.count].push(this.rantParse[i]);
-                console.log(this.rantParse[i]);
-                console.log("Tweet " + this.count + ": ");
+                
+                window["tweet" + this.count].splice(this.index, 0, this.rantParse[i]);
+                // console.log(this.rantParse[i]);
+                // console.log("Tweet " + this.count + ": ");
                 console.log(window["tweet" + this.count]);
-
+                this.count++;
+                this.index++;
             }
+
+            console.log(window["tweet" + this.count].join(" "));
         };
     }
 };
 
-window["tweet" + twitter.count] = [];
+// window["tweet" + twitter.count] = [];
 
 // GET RANT
 
