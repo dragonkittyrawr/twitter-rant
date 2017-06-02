@@ -3,10 +3,12 @@ var twitter = {
     rantParse: [],
     rantCharCount: [],
     tweetCount: 0,
-    wordCount: 0,
+    charCount: 0,
     tweets: 0,
     count: 1,
     index: 0,
+    rantCharCountLength: 0,
+    ix: 0,
 
     tweetParser: function(rantRaw, rantParse, rantCharCount) {
         this.rantParse = rantParse;
@@ -16,54 +18,71 @@ var twitter = {
         // DETERMINE number of tweets
 
         if (rantCharCount.length > 99) {
-            tweetCount = Math.round(rantCharCount.length / 135);
+            tweetCount = Math.ceil(rantCharCount.length / 135);
             console.log("tweetCount: " + tweetCount);
+            console.log("rantCharCount " + this.rantCharCount);
+            this.rantCharCountLength = 135;
+            for (let i = 0; i < tweetCount; i++) {
+                this.index = 0;
+                tweets = i + 1;
+                window["tweet" + tweets] = [];
+                window["tweet" + tweets].push(tweets + "/" + tweetCount);
+                twitter.tweetBuilder();
+            }
         } else if (rantCharCount.length < 99 && rantCharCount.length > 9) {
-            tweetCount = (rantCharCount.length / 136);
+            tweetCount = Math.ceil(rantCharCount.length / 136);
             console.log("tweetCount: " + tweetCount);
+            console.log("rantCharCount " + this.rantCharCount);
+            this.rantCharCountLength = 136;
+            for (let i = 0; i < tweetCount; i++) {
+                this.index = 0;
+                tweets = i + 1;
+                window["tweet" + tweets] = [];
+                window["tweet" + tweets].push(tweets + "/" + tweetCount);
+                twitter.tweetBuilder();
+            }
         } else {
-            tweetCount = (rantCharCount.length / 137);
+            tweetCount = Math.ceil(rantCharCount.length / 137);
             console.log("tweetCount: " + tweetCount);
+            console.log("rantCharCount " + this.rantCharCount);
+            this.rantCharCountLength = 137;
+            for (let i = 0; i < tweetCount; i++) {
+                this.index = 0;
+                tweets = i + 1;
+                window["tweet" + tweets] = [];
+                window["tweet" + tweets].push(tweets + "/" + tweetCount);
+                twitter.tweetBuilder();
+            }
         };
+    },
+
+    tweetBuilder: function() {
 
         // BUILD tweetCount
 
-        for (var p = 0; p < tweetCount; p++) {
-            tweets = p + 1;
-            window["tweet" + twitter.count] = [];
-            console.log(tweets + "/" + tweetCount);
-            console.log(window["tweet" + this.count]);
-            console.log(this.count);
-            window["tweet" + this.count].push(tweets + "/" + tweetCount);
-            this.count++;
+        this.charCount += window["tweet" + tweets][0].length;
+        console.log(window["tweet" + tweets]);
+        console.log(this.charCount);
+        // this.count++;
+
+        // BUILD tweets
+
+        while (this.charCount < this.rantCharCountLength && rantParse[this.ix] !== undefined) {
+
+            this.charCount += rantParse[this.ix].length + 1;
+
+            window["tweet" + this.count].splice(this.index, 0, this.rantParse[this.ix]);
+            this.ix++;
+            this.index++;
+
+
         };
 
-        // BUILD wordCount
-
-        for (var i = 0; i < rantParse.length; i++) {
-            // console.log("rantParse[i].length: " + rantParse[i].length);
-            this.wordCount += rantParse[i].length + 1;
-            console.log("wordCount: " + this.wordCount);
-
-            // BUILD tweets
-            this.count = 1;
-            // var index = 0;
-            if (this.wordCount < 140) {
-                
-                window["tweet" + this.count].splice(this.index, 0, this.rantParse[i]);
-                // console.log(this.rantParse[i]);
-                // console.log("Tweet " + this.count + ": ");
-                console.log(window["tweet" + this.count]);
-                this.count++;
-                this.index++;
-            }
-
-            console.log(window["tweet" + this.count].join(" "));
-        };
+        console.log(window["tweet" + this.count].join(" "));
+        this.count++;
+        this.charCount = 0;
     }
 };
-
-// window["tweet" + twitter.count] = [];
 
 // GET RANT
 
