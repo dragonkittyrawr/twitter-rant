@@ -86,21 +86,21 @@ var twitter = {
 
 // GET RANT
 
-$("#rantSubmit").on("click", function(event) {
-    // PREVENT PAGE REFRESH
-    event.preventDefault();
+// $("#rantSubmit").on("click", function(event) {
+//     // PREVENT PAGE REFRESH
+//     event.preventDefault();
 
-    // CREATE rantRaw
-    rantRaw = $("#rantRaw").val();
-    console.log("rantRaw: " + rantRaw);
+//     // CREATE rantRaw
+//     rantRaw = $("#rantRaw").val();
+//     console.log("rantRaw: " + rantRaw);
 
-    // CREATE rantParse
-    rantParse = rantRaw.split(" ");
-    console.log("rantParse: " + rantParse);
+//     // CREATE rantParse
+//     rantParse = rantRaw.split(" ");
+//     console.log("rantParse: " + rantParse);
 
-    // CREATE rantCharCount
-    rantCharCount = rantRaw.split("");
-    console.log("rantCharCount: " + rantCharCount.length);
+//     // CREATE rantCharCount
+//     rantCharCount = rantRaw.split("");
+//     console.log("rantCharCount: " + rantCharCount.length);
 
-    twitter.tweetParser(rantRaw, rantParse, rantCharCount);
-});
+//     twitter.tweetParser(rantRaw, rantParse, rantCharCount);
+// });
