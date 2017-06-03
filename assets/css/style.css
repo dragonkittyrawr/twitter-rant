@@ -6,16 +6,9 @@ body {
     font-size: 30px;
 }
 
-#rantRaw {
-    margin: 0px;
-    padding: 10px;
-    height: 280px;
-    width: 350px;
-    overflow: auto;
-}
-
 fieldset {
     border: none;
+    overflow: auto;
 }
 
 input {
@@ -66,7 +59,23 @@ input:active {
     margin-top: 50px;
     text-align: center;
     width: 500px;
+    height: auto;
     margin-left: 400px;
     background: rgba(255, 255, 255, 0.8);
     padding: 10px;
+    padding-left: 15px;
+    padding-right:15px;
+    overflow: auto;
+}
+
+#rantRaw {
+    margin: 0px;
+    padding: 10px;
+    height: 280px;
+    width: 350px;
+    overflow: auto;
+}
+
+#parsedTweets {
+    overflow: auto;
 }
