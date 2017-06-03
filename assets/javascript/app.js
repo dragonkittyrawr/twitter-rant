@@ -55,7 +55,6 @@ var twitter = {
             }
         };
     },
-
     tweetBuilder: function() {
 
         // BUILD tweetCount
@@ -63,7 +62,6 @@ var twitter = {
         this.charCount += window["tweet" + tweets][0].length;
         console.log(window["tweet" + tweets]);
         console.log(this.charCount);
-        // this.count++;
 
         // BUILD tweets
 
@@ -74,33 +72,14 @@ var twitter = {
             window["tweet" + this.count].splice(this.index, 0, this.rantParse[this.ix]);
             this.ix++;
             this.index++;
-
-
         };
+
+        // RETURN tweets
+
+        $("#parsedTweets").append("<div>" + window["tweet" + this.count].join(" ") + "</div>");
 
         console.log(window["tweet" + this.count].join(" "));
         this.count++;
         this.charCount = 0;
     }
 };
-
-// GET RANT
-
-// $("#rantSubmit").on("click", function(event) {
-//     // PREVENT PAGE REFRESH
-//     event.preventDefault();
-
-//     // CREATE rantRaw
-//     rantRaw = $("#rantRaw").val();
-//     console.log("rantRaw: " + rantRaw);
-
-//     // CREATE rantParse
-//     rantParse = rantRaw.split(" ");
-//     console.log("rantParse: " + rantParse);
-
-//     // CREATE rantCharCount
-//     rantCharCount = rantRaw.split("");
-//     console.log("rantCharCount: " + rantCharCount.length);
-
-//     twitter.tweetParser(rantRaw, rantParse, rantCharCount);
-// });

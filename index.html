@@ -4,6 +4,7 @@
 <head>
     <title>Go On A Rant</title>
     <meta charset="utf-8">
+    <!-- <link rel="stylesheet" type="text/css" href="assets/css/reset.css"> -->
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Bubbler+One" rel="stylesheet">
     <script src="https://code.jquery.com/jquery.js"></script>
@@ -29,7 +30,8 @@
         </div>
         <!-- second side of the card -->
         <div id="style2">
-            <h3>"Lorum Ipsem"</h3>
+            <h3>Copy Pasta</h3>
+            <div id="parsedTweets"></div>
             <!-- the class "first quickFlipCta" means that clicking on this will trigger the flip -->
             <input class="first quickFlipCta" type="submit" value="Go Back">
         </div>
@@ -38,6 +40,7 @@
     <script type="text/javascript">
     $(function() {
         $('.quickFlip').quickFlip();
+
         // GET RANT
 
         $("#rantSubmit").on("click", function(event) {
