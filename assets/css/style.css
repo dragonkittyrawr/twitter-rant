@@ -64,7 +64,15 @@ input:active {
     background: rgba(255, 255, 255, 0.8);
     padding: 10px;
     padding-left: 15px;
-    padding-right:15px;
+    padding-right: 15px;
+    overflow: auto;
+}
+
+#tweet {
+    border: 1px ridge lightgrey;
+    /*text-align: center;*/
+    background: rgba(255, 255, 255, 0.8);
+    padding: 10px;
     overflow: auto;
 }
 

@@ -76,7 +76,7 @@ var twitter = {
 
         // RETURN tweets
 
-        $("#parsedTweets").append("<div class=\"style2\">" + window["tweet" + this.count].join(" ") + "</div>");
+        $("#parsedTweets").append("<div id=\"tweet\">" + window["tweet" + this.count].join(" ") + "</div>");
 
         console.log(window["tweet" + this.count].join(" "));
         this.count++;
