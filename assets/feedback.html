@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Project 2 Feedback</title>
+</head>
+<script src="https://code.jquery.com/jquery.js"></script>
+<body>
+<table id="feedbackDisplay">
+	<thead>
+		<th>Reviwer Name</th>
+		<th>Project Name</th>
+		<th>Presentation Score</th>
+		<th>Tech Integration Score</th>
+		<th>Front End Score</th>
+		<th>Back End Score</th>
+		<th></th>
+		<th></th>
+		<th></th>
+		<th></th>
+	</thead>
+</table>
+<script type="text/javascript" src="feedbackParse.js"></script>
+<script type="text/javascript">
+	var count = 1;
+    
+    var reviwerNameRow = $("<tr id=\"reviwerName" + count + "\">");
+
+    // CELL - TRAIN NAME
+    var projectNameCell = $("<td id=\"projectName" + count + "\">");
+
+    // CELL - DESTINATION
+    var presentationCell = $("<td id=\"presentation" + count + "\">");
+
+    // CELL - FREQUENCY
+    var techIntegrationCell = $("<td id=\"techIntegration" + count + "\">");
+
+    // CELL - TIME OF TRAIN'S NEXT ARRIVAL
+    var frontEndCell = $("<td id=\"frontEnd" + count + "\">");
+
+    // CELL - MINUTES UNTIL TRAIN'S NEXT ARRIVAL
+    var backEndCell = $("<td id=\"backEnd" + count + "\">");
+
+    function displayTable() {
+
+    // Append cells to row.
+    reviwerNameRow.append(projectNameCell);
+
+    reviwerNameRow.append(presentationCell);
+
+    reviwerNameRow.append(techIntegrationCell);
+
+    reviwerNameRow.append(frontEndCell);
+
+    reviwerNameRow.append(backEndCell);
+
+    // $("#feedbackDisplay").append(reviwerNameRow);
+
+    // $("#reviwerName1").innerHTML(feedback1.Your_Name);
+}
+
+displayTable();
+    
+</script>
+</body>
+</html>
